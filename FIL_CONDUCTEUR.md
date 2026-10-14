@@ -1,4 +1,4 @@
-# FIL CONDUCTEUR DigiERP - revision 3 du 14/10/2026 (par Project Pilote)
+# FIL CONDUCTEUR DigiERP - revision 4 du 15/10/2026 (par Project Pilote)
 # Lu au debut de chaque conversation, dans chaque Project. Modifie par script uniquement
 # (revision + 1 a chaque modification). Regles : section 7. Format : LISEZMOI.md.
 # Vit dans le depot de PILOTAGE (digierp-pilotage, origin GitHub seul), distinct du depot de code.
@@ -17,13 +17,13 @@
 | Migrations dev / recette | 45 / 39 ; derniere 20261011.3 |
 | Tables sous RLS (dev) | 16 |
 | Non-regression de reference | 18 controles (verte le 12/10 : echecs=0, ok=18) |
-| Qui tient le depot (arbre de travail du PC) | Pilote - decoupage, option B (etapes B3-B4) |
+| Qui tient le depot (arbre de travail du PC) | Pilote - decoupage ; B1 a B4 faits, prochaine etape D4 ; aucun travail non commite |
 
 ## 2. Compteurs partages (prochain numero libre)
 
 | Compteur | Prochain |
 |---|---|
-| Lecon apprise | 250 |
+| Lecon apprise | 275 (250 a 274 : LECONS_APPRISES_SUITE_10, Project Pilote) |
 | Dette technique | 49 (47 a moitie soldee par 3a1b0dfa : reste migration_old ; 48 = secrets de developpement en dur, Plateforme) |
 | Erreur frequente | 153 |
 | Ordre de travail | OT-001 |
@@ -32,7 +32,7 @@
 
 | Project | Etat | Prochaine etape | Fenetres ouvertes | Derniere conversation |
 |---|---|---|---|---|
-| Pilote (actuel DigiERP) | decoupage, option B : depot de pilotage cree (B1), controle de reprise rev. 3 (B2) ; non commite | B3 documents, B4 premier commit du depot de pilotage ; puis D4 (creation des Projects) | - | 14/10/2026 |
+| Pilote (actuel DigiERP) | decoupage, option B : depot de pilotage cree, documents revises et pousses (B1 a B4, commit 16522869) | D4 : creation des Projects (mesurer d'abord : un Project claude.ai accepte-t-il deux sources GitHub ?) | - | 15/10/2026 |
 | Frontend | a creer (D4) | OT-001 (preuve du Project), puis reprise de l'etape 1.7 des patrons | - | - |
 | Backend RH | a creer (D4) | OT-002 (preuve du Project) | - | - |
 | Plateforme | a creer (D4) | OT-003 (preuve du Project) ; dettes 47 (reste), 48 | - | - |
