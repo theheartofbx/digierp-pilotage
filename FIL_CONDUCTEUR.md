@@ -1,4 +1,4 @@
-# FIL CONDUCTEUR DigiERP - revision 4 du 15/10/2026 (par Project Pilote)
+# FIL CONDUCTEUR DigiERP - revision 5 du 15/10/2026 (par Project Pilote)
 # Lu au debut de chaque conversation, dans chaque Project. Modifie par script uniquement
 # (revision + 1 a chaque modification). Regles : section 7. Format : LISEZMOI.md.
 # Vit dans le depot de PILOTAGE (digierp-pilotage, origin GitHub seul), distinct du depot de code.
@@ -17,14 +17,14 @@
 | Migrations dev / recette | 45 / 39 ; derniere 20261011.3 |
 | Tables sous RLS (dev) | 16 |
 | Non-regression de reference | 18 controles (verte le 12/10 : echecs=0, ok=18) |
-| Qui tient le depot (arbre de travail du PC) | Pilote - decoupage ; B1 a B4 faits, prochaine etape D4 ; aucun travail non commite |
+| Qui tient le depot (arbre de travail du PC) | Pilote - decoupage ; D4.1, D4.2 et E1 faits le 15/10, prochaine etape D4.3 (OT-001 a OT-003) ; aucun travail non commite |
 
 ## 2. Compteurs partages (prochain numero libre)
 
 | Compteur | Prochain |
 |---|---|
-| Lecon apprise | 275 (250 a 274 : LECONS_APPRISES_SUITE_10, Project Pilote) |
-| Dette technique | 49 (47 a moitie soldee par 3a1b0dfa : reste migration_old ; 48 = secrets de developpement en dur, Plateforme) |
+| Lecon apprise | 281 (275 a 280 : LECONS_APPRISES_SUITE_11, Project Pilote) |
+| Dette technique | 49 (47 a moitie soldee par 3a1b0dfa, etendue le 15/10 aux fichiers morts de la racine et de rh-api ; 48 = secrets de developpement en dur, Plateforme) |
 | Erreur frequente | 153 |
 | Ordre de travail | OT-001 |
 
@@ -32,10 +32,10 @@
 
 | Project | Etat | Prochaine etape | Fenetres ouvertes | Derniere conversation |
 |---|---|---|---|---|
-| Pilote (actuel DigiERP) | decoupage, option B : depot de pilotage cree, documents revises et pousses (B1 a B4, commit 16522869) | D4 : creation des Projects (mesurer d'abord : un Project claude.ai accepte-t-il deux sources GitHub ?) | - | 15/10/2026 |
-| Frontend | a creer (D4) | OT-001 (preuve du Project), puis reprise de l'etape 1.7 des patrons | - | - |
-| Backend RH | a creer (D4) | OT-002 (preuve du Project) | - | - |
-| Plateforme | a creer (D4) | OT-003 (preuve du Project) ; dettes 47 (reste), 48 | - | - |
+| Pilote (actuel DigiERP, non renomme) | decoupage : D4.1 (3 Projects crees, filtres et jauges releves) et D4.2 (3 prompts de reprise livres et prouves) faits ; E1 : ne synchronise plus que README.md du code + le depot de pilotage (31 %) | D4.3 : emettre OT-001 a OT-003 avec leurs tests de recette ; puis D5 (renommage, instructions, PROMPT_REPRISE_PILOTE) | - | 15/10/2026 |
+| Frontend | cree le 15/10 ; prompt PROMPT_REPRISE_FRONTEND rev. 2 ; jauge 31 % | OT-001 (preuve du Project), puis reprise de l'etape 1.7 des patrons | - | - |
+| Backend RH | cree le 15/10 ; prompt PROMPT_REPRISE_BACKEND rev. 2 ; jauge 43 % | OT-002 (preuve du Project) | - | - |
+| Plateforme | cree le 15/10 (filtre par. 3.4 + outillage de build, F1) ; prompt PROMPT_REPRISE_PLATEFORME rev. 1 (acces serveur : ce Project seulement) ; jauge 5 % | OT-003 (preuve du Project) ; dettes 42 (avant 1.9), 47 (reste), 48 | - | - |
 
 ## 4. Ordres de travail
 
@@ -56,11 +56,11 @@ BILAN_RECETTE|OT-NNN|...|echecs=0.
 
 | Date | Decision |
 |---|---|
+| 15/10/2026 | E1 : le Pilote ne synchronise plus le code (README.md seul) mais le depot de pilotage entier ; ses instructions sont a reecrire en D5 (elles citent encore la lecture du code) |
+| 15/10/2026 | F1 : le filtre du Project Plateforme recoit l'outillage de build (.gitignore, .gitlab-ci.yml, mvnw, .mvn, fichiers de rh-api) ; les fichiers morts ne sont dans aucun filtre (dette 47) |
+| 15/10/2026 | Mesure D4 : un Project claude.ai accepte deux sources GitHub de depots prives differents ; chaque sous-projet synchronise le code filtre ET le depot de pilotage filtre |
 | 14/10/2026 | Option B : pilotage dans un depot separe (GitHub theheartofbx/digierp-pilotage, origin seul) ; ni documentation ni pilotage sur biapay (regle de l'utilisateur), verifie par R16 |
 | 14/10/2026 | Documentation retiree du depot de code (3a1b0dfa) ; README.md conserve ; historique non reecrit |
-| 14/10/2026 | T-A : tout document ecrit par l'assistant est livre au PC avec ses octets exacts (contenu embarque + empreintes SHA-256) ; la copie depuis claude.ai regenere le Markdown et n'est plus utilisee |
-| 14/10/2026 | Option A : les 10 standards de base sont des copies claude.ai normalisees ; texte conforme, position de certaines lignes vides non garantie (ecart declare dans LISEZMOI) |
-| 14/10/2026 | Le Project principal devient le PILOTE : ordres de travail + tests de recette ecrits avant l'execution, verdict avant toute tache suivante |
 
 ## 7. Regles du fil
 

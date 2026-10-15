@@ -1,6 +1,7 @@
 # digierp-pilotage - depot de pilotage de DigiERP
-# Cree le 12/10/2026 ; revision 3 du 15/10/2026 (option B : depot separe du depot de code, remote
-# origin GitHub seul, jamais biapay). Revision 2 du 14/10 : methode T-A, ecart declare des
+# Cree le 12/10/2026 ; revision 4 du 15/10/2026 (D4 : deux sources par Project mesurees, Projects
+# crees, prompts de reprise televerses). Revision 3 du 15/10 (option B : depot separe du depot de
+# code, remote origin GitHub seul, jamais biapay). Revision 2 du 14/10 : methode T-A, ecart declare des
 # standards de base, controle de reprise unique. Statut : EN CONSTRUCTION jusqu'a l'etape D5 du
 # decoupage. Conception : claude/DECOUPAGE_PROJECTS_20261012.md ; option B :
 # claude/PROMPT_REPRISE_DECOUPAGE_20261014.md (Project Pilote).
@@ -61,17 +62,27 @@ digierp-pilotage/            racine du depot
 | Controle de reprise | commun/controle_reprise.sh | tous | Pilote seulement |
 | Standards | standards/<couche>/ | Project de la couche + Pilote | Pilote, par NOUVEAUX fichiers de complements |
 | Ordres de travail, tests de recette, verdicts | conversation du Pilote ; resume dans le fil | - | Pilote |
-| Prompt de reprise d'un Project | documents du Project claude.ai | ce Project | ce Project |
+| Prompt de reprise d'un Project | documents du Project claude.ai ; source sur le PC : docs/digierp/projects/<project>/ (hors depot) | ce Project | ce Project (livre par T-A, televerse) |
 | Lecons apprises | documents du Project qui les vit (numero attribue par le fil) | - | ce Project |
 | Acces au serveur de recette | documents du Project Plateforme UNIQUEMENT | - | Plateforme ; jamais dans ce depot |
 | Preuves, journaux, recettes | PC : docs/digierp/tests/ (hors depot) | - | - |
 
-## Synchronisation dans les Projects (a mesurer en D4)
+## Synchronisation dans les Projects (mesuree le 15/10/2026, etape D4)
 
-Chaque Project doit lire DEUX sources GitHub : le depot de code (filtre de sa couche) et ce
-depot (filtre du pilotage). Qu'un Project claude.ai accepte deux sources n'est PAS encore
-mesure : relevage en D4 (project_info de chaque Project). Si ce n'est pas possible, les options
-seront presentees a ce moment ; rien ne sera suppose d'ici la.
+Un Project claude.ai accepte DEUX sources GitHub de depots prives differents. Chaque Project lit
+le depot de code (filtre de sa couche) et ce depot (filtre du pilotage). Filtres releves par
+project_info le 15/10 :
+
+| Project | Depot de code | Ce depot |
+|---|---|---|
+| Pilote | README.md seul | tout |
+| Frontend | rh-frontend (sans package-lock.json ni test-results/) | LISEZMOI.md, FIL_CONDUCTEUR.md, commun/, standards/frontend/, standards/projet/ |
+| Backend RH | rh-api/src (sans db/migration_old/), rh-api/pom.xml, rh-api/Dockerfile, outils/ | LISEZMOI.md, FIL_CONDUCTEUR.md, commun/, standards/backend/, standards/projet/ |
+| Plateforme | auth-service, gateway, eureka, postgres-init, docker-compose.yml, .env.example, README.md, Dockerfiles et nginx, outils/, outillage de build | LISEZMOI.md, FIL_CONDUCTEUR.md, commun/, standards/projet/ |
+
+Detail exact des entrees : prompt de reprise de chaque Project (par. 1.1). Un Project ne voit
+une modification de ce depot qu'apres "Sync" dans claude.ai (controle R0). Taille de la base de
+connaissances : cible <= 70 % de la limite, relevee par project_info.
 
 ## Transfert d'un document du Project vers ce depot
 
@@ -91,6 +102,9 @@ voient pas cette alteration : seule l'identite SHA-256 prouve une copie.
    sur la lecture du texte brut). Ces fichiers ne sont jamais reecrits en place.
 3. **Evolution d'un standard** : nouveau fichier de complements (tableau "regles devenues
    fausses"), ecrit par l'assistant et livre par T-A.
+4. **Document d'un sous-projet** (prompt de reprise...) : livre au PC par T-A, puis TELEVERSE
+   comme fichier dans le Project (le televersement conserve les octets, mesure du 15/10 ; jamais
+   de copier-coller), puis relu dans le Project (empreinte SHA-256 et nombre de lignes).
 
 ## Regles
 
