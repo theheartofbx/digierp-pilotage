@@ -1,5 +1,7 @@
 # INDEX DES DETTES TECHNIQUES DigiERP
-# Revision 5 du 15/10/2026 (dette 49 nouvelle : emojis hors navigation, decision P4 de l'OT-004 ;
+# Revision 6 du 15/10/2026 (dette 50 nouvelle : bouton fermer de NotificationsPanel sans nom
+#   accessible, question 3 du CR-006) ; revision 5 du 15/10/2026 (dette 49 nouvelle : emojis
+#   hors navigation, decision P4 de l'OT-004 ;
 #   dette 42 : echeance ramenee au deploiement des patrons, decision DR1) ; revision 4 du
 #   15/10/2026 (dette 48 etendue au depot de pilotage, constat du CR-003) ;
 #   revision 3 du 15/10/2026 (dette 47 etendue aux fichiers morts releves en D4.1) ; revision 2
@@ -64,6 +66,7 @@
 | 47 | Fichiers inutiles suivis par Git : rh-api/node_modules/ (380 fichiers) RETIRE par 3a1b0dfa (14/10, avec la documentation et deux fichiers de cookies curl ; regles ajoutees au .gitignore racine) ; restent migration_old_archive_backup/ (racine) et rh-api/src/main/resources/db/migration_old/ (inutilise par Flyway, 0 reference) : retrait par un correctif a part, prouve (aucun usage) ; constat du 15/10 (D4.1, docs/digierp/tests/mesure_tailles_d4.log) : fichiers morts suivis a la racine (ERROR et [backend, 0 octet ; migrate.py, 6 956 octets ; patch_applayout_permissions.py, 4 618 octets) et rh-api/ACCC4CF8.asc (4 812 octets, nature a identifier) ; aucun n'est dans un filtre de Project, meme preuve d'absence d'usage avant retrait | Plateforme | dossier claude/DECOUPAGE_PROJECTS_20261012.md par. 1 ; prompts de decoupage du 14/10 et du 15/10 par. 2 | ouverte, a moitie soldee (3a1b0dfa) |
 | 48 | Secrets de developpement en dur dans la configuration suivie par Git (cle de signature JWT et mot de passe de base dans docker-compose.yml, les application*.yaml d'auth-service et de gateway, postgres-init/01_create_app_role.sql, README.md) ; prouver que la recette en utilise d'AUTRES (comparaison d'empreintes sur le serveur, jamais de valeur affichee), puis sortir les valeurs de la configuration suivie ; constat du 15/10 (CR-003) : le mot de passe de la base de DEVELOPPEMENT du PC figure aussi dans le depot de pilotage (commun/controle_reprise.sh, fonction psqlq ; commun/REGLES_COMMUNES.md, par. 4.1) ; le controle R9 ne le cherche pas (il vise les acces au serveur) : a traiter avec la dette (meme valeur, meme decision), R9 inchange d'ici la | Plateforme | prompt de decoupage du 14/10 par. 2 ; CR-003 du 15/10 | ouverte, a prouver |
 | 49 | Emojis hors navigation : 393 points de code emoji dans src/ apres l'etape 1.7b (mesure de la recette OT-005), repartis dans 43 tables locales (inventaire OT-004 avant 1.7b : 431 emojis dans 89 fichiers, navigation comprise) ; a remplacer par le lexique d'icones (src/shared/ui/icones.ts, composant Icone) module par module avec les etapes 2 a 4 des patrons, jamais en masse ; toute cle nouvelle decidee par la table de reference ; piste : cliquet sur le nombre d'emojis de src/ (ne doit pas augmenter) | Frontend | CR-004 et CR-005 du 15/10 ; decision P4 (OT-004) | ouverte |
+| 50 | NotificationsPanel : le bouton fermer (l. 91-93 apres 33cf81dd) n'a pas de nom accessible (icone decorative, aucun texte ni aria-label) ; preexistant, hors OT-006 ; a traiter par une cle i18n + aria-label, ou par BoutonIcone (etape 1.5) qui l'imposera | Frontend | CR-006 du 15/10 (question 3) | ouverte |
 
 ## 2. DETTES SOLDEES
 
