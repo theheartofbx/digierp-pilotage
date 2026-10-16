@@ -1,4 +1,4 @@
-# FIL CONDUCTEUR DigiERP - revision 11 du 15/10/2026 (par Project Pilote)
+# FIL CONDUCTEUR DigiERP - revision 12 du 16/10/2026 (par Project Frontend)
 # Lu au debut de chaque conversation, dans chaque Project. Modifie par script uniquement
 # (revision + 1 a chaque modification). Regles : section 7. Format : LISEZMOI.md.
 # Vit dans le depot de PILOTAGE (digierp-pilotage, origin GitHub seul), distinct du depot de code.
@@ -33,7 +33,7 @@
 | Project | Etat | Prochaine etape | Fenetres ouvertes | Derniere conversation |
 |---|---|---|---|---|
 | Pilote (actuel DigiERP, non renomme) | decoupage termine (D4.1, D4.2, D4.3, E1) ; ne synchronise que README.md du code + le depot de pilotage ; jauge 640 619 (32 %) ; patrons repris par OT (OT-004 a OT-008 ACCEPTE) | emettre OT-009 (etape 1.3a : jetons et polices, Frontend) ; D5 en temps masque (renommage, instructions des 4 Projects : un fichier synchronise se lit par project_search, REGLES_COMMUNES rev. 3, PROMPT_REPRISE_PILOTE) | - | 15/10/2026 |
-| Frontend | prouve (OT-001) ; etape 1.7 terminee : 1.7a (OT-004), 1.7b (OT-005, 2a30d7c7) et 1.7c (OT-006, 33cf81dd : NotificationsPanel sur le lexique, mecanisme d'exception retire, tests 82/82) ACCEPTE, non deployee (DR1) ; inventaire de 1.3 (OT-007) et DC1 (OT-008, db314b41 : cible de build et browserslist = socle, tests 90/90) ACCEPTE ; prompt rev. 7 ; jauge 625 157 (31 %, mesure OT-001) | OT-009 : 1.3a (jetons.css, theme.extend, polices, index.css) ; puis OT-010 (1.3b *.styles.js), OT-011 (code mort) | - | 15/10/2026 (OT-008) |
+| Frontend | prouve (OT-001) ; etape 1.7 terminee (1.7a OT-004, 1.7b OT-005 2a30d7c7, 1.7c OT-006 33cf81dd) ACCEPTE ; inventaire 1.3 (OT-007) et DC1 (OT-008 db314b41) ACCEPTE ; 1.3a (OT-009 5e6c682d : jetons de couleur en variables CSS branchees dans theme.extend, polices IBM Plex Sans/Mono latin+latin-ext, index.css sur IBM Plex Sans ; tests 92/92, ancien lint 1604/55 ; palette.test.ts) ACCEPTE, non deployee (DR1) ; prompt rev. 8 ; jauge 625 157 (31 %, mesure OT-001) | OT-010 : 1.3b (*.styles.js sur les jetons, rendu identique) ; puis OT-011 (code mort) | - | 16/10/2026 (OT-009) |
 | Backend RH | prouve (OT-002 ACCEPTE : controle 26 OK, prompt rev. 2 relu identique) ; jauge 876 438 (44 %) | sur OT du Pilote | - | 15/10/2026 (OT-002) |
 | Plateforme | prouve (OT-003 ACCEPTE : controle 25 OK, prompt rev. 1 relu identique, aucun acces serveur dans le CR) ; jauge 101 254 (5 %) | sur OT du Pilote ; dettes 42 (avant le deploiement des patrons, DR1), 47 (reste), 48 | - | 15/10/2026 (OT-003) |
 
