@@ -1,5 +1,6 @@
 # REGLES COMMUNES DigiERP - tous les Projects (Pilote, Frontend, Backend RH, Plateforme)
-# Revision 2 du 15/10/2026 (option B : depot de pilotage separe, jamais sur biapay ; methode
+# Revision 3 du 16/10/2026 (par. 2.1, 2.3, 2.4 : mode d'execution des OT) ;
+#   revision 2 du 15/10/2026 (option B : depot de pilotage separe, jamais sur biapay ; methode
 #   T-A en place de X1) ; revision 1 du 14/10/2026. Statut : EN CONSTRUCTION jusqu'a l'etape
 #   D5 du decoupage ; jusque-la, claude/PROMPT_REPRISE_PRINCIPAL_20261011.md (Project principal)
 #   fait foi en cas d'ecart.
@@ -64,7 +65,7 @@ d'ecrire ; toute affirmation de securite ou de compatibilite est PROUVEE.
 | Acteur | Fait | Ne fait pas |
 |---|---|---|
 | Pilote (Project principal) | tient le plan et l'ordre des taches ; redige chaque OT et son TEST DE RECETTE ; rend le VERDICT ; met a jour le fil ; autorise la tache suivante | ne modifie pas le code des couches (seulement le depot de pilotage) |
-| Sous-projet (Frontend, Backend RH, Plateforme) | execute l'OT avec les regles de ce fichier ; rend un COMPTE RENDU (CR) | ne choisit pas la tache suivante ; ne modifie rien hors du perimetre de l'OT ; ne declare pas l'OT accepte |
+| Sous-projet (Frontend, Backend RH, Plateforme) | execute l'OT avec les regles de ce fichier, en donnant chaque commande a l'utilisateur (2.4) ; rend un COMPTE RENDU (CR) | ne lance aucune commande depuis son propre espace (2.4) ; ne choisit pas la tache suivante ; ne modifie rien hors du perimetre de l'OT ; ne declare pas l'OT accepte |
 | Utilisateur | colle l'OT dans une conversation du sous-projet ; lance les commandes ; colle le CR puis la sortie du test de recette dans le Pilote | - |
 
 ### 2.2 Cycle
@@ -91,6 +92,7 @@ PERIMETRE AUTORISE : <fichiers / dossiers>      INTERDIT : <le reste, et ...>
 LIVRABLES : <fichiers> ; commit(s) <message impose ou prefixe> ; push origin + biapay (depot de code)
 CRITERES D'ACCEPTATION (testes par le Pilote) : C1 ... Cn
 METHODE : regles communes (commun/REGLES_COMMUNES.md du depot de pilotage) ; un fichier a la fois
+MODE D'EXECUTION : l'assistant ne lance rien ; il donne chaque commande, l'utilisateur la lance dans WSL2 et colle la sortie (2.4)
 FIN : rendre le COMPTE RENDU ci-dessous, rien d'autre ; ne pas enchainer sur une autre tache
 === COMPTE RENDU CR-<NNN> (a remplir) ===
 STATUT : LIVRE | BLOQUE   COMMITS : <hash complets>   FICHIERS : <liste>
@@ -118,6 +120,13 @@ empreintes, contenu servi), jamais le recit du CR.
   (compteurs du fil) : lecons, dettes, erreurs frequentes, OT.
 - Deux Projects ne travaillent pas en meme temps sur le PC (un seul arbre de travail) : le fil
   dit qui "tient" le depot ; un increment non commite bloque les autres.
+- Mode d'execution (16/10/2026, apres le blocage de l'OT-009) : l'assistant d'un Project ne
+  lance JAMAIS lui-meme de commande sur un depot depuis son propre espace de travail : les
+  depots sont sur le PC de l'utilisateur (/mnt/c/Users/lecoe/git/...). Il donne chaque commande
+  ou script avec le resultat attendu ; l'utilisateur la lance dans son terminal WSL2 et colle la
+  sortie. Aucun autre outil d'execution n'est suppose (pas d'agent en ligne de commande). Un
+  depot introuvable dans l'espace de l'assistant n'est pas un motif de BLOQUE : il donne la
+  commande. Tout OT le rappelle par sa ligne MODE D'EXECUTION (format 2.3).
 
 ### 2.5 Fin de conversation d'un Project
 Mettre a jour SA ligne du fil (script a garde-fous, revision + 1), son prompt de reprise ;
