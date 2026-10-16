@@ -1,5 +1,7 @@
 # INDEX DES DETTES TECHNIQUES DigiERP
-# Revision 10 du 16/10/2026 (dette 42 : echeance alignee sur DR3 ; dette 51 nouvelle : cles de
+# Revision 11 du 16/10/2026 (dette 9 : config/theme.js, shared/styles/forms.styles.js et App.css
+#   retires par e04ee849, OT-011) ;
+#   revision 10 du 16/10/2026 (dette 42 : echeance alignee sur DR3 ; dette 51 nouvelle : cles de
 #   styles referencees mais inexistantes, releves OT-010) ;
 #   revision 9 du 15/10/2026 (dette 8 : nginx 1.31.7 constate ; dette 39 : DC1 effectif, OT-008, et
 #   KaiOS 3, K1) ; revision 8 du 15/10/2026 (dettes 9 et 39 apres l'inventaire OT-007 ; socle
@@ -35,7 +37,7 @@
 | 6 | Absences (dont type AUTRE inexistant : Detail obligatoire non testable) | Backend RH | prompts du 05/10 et du 10/10 soir | ouverte |
 | 7 | Jobs Missions | Backend RH | prompt du 05/10 | ouverte |
 | 8 | Deploiement : index.html sans Cache-Control (no-cache a poser) ; attribut version de docker-compose (avertissement vu le 12/10 en recette) ; FROM nginx:alpine non fige dans le Dockerfile frontend (curl present au 12/10, non garanti ; nginx passe de 1.31.6 a 1.31.7 a la reconstruction du 15/10, constat CR-008) ; /vite.svg (nom sans empreinte) mis en cache un an immutable ; aucune CSP servie (conception des patrons par. 6.4) | Plateforme | prompts du 05/10 et du 12/10 | ouverte |
-| 9 | Code mort frontend : config/theme.js et shared/styles/forms.styles.js a 0 importeur (re-mesure par OT-007 ; theme.js diverge du code : primaire blue-700 et neutres gray) : suppression par OT-011 (J7), preuve build identique ; App.css (43 lignes, restes du modele Vite, hex en dur) : importeurs a mesurer, suppression par OT-011 si aucun usage ; Button, Badge, EmptyState, PageHeader, Alert a 0 importeur (remplaces en 1.5) | Frontend | prompts du 05/10 et du 12/10 | ouverte |
+| 9 | Code mort frontend : config/theme.js, shared/styles/forms.styles.js et App.css RETIRES par e04ee849 (OT-011, 16/10 : 0 importeur reel, build equivalent, decision O1) ; restent Button, Badge, EmptyState, PageHeader, Alert a 0 importeur (remplaces en 1.5) et deux commentaires qui citent les fichiers retires : buttons.styles.js:3 ("aligne avec theme.js") et FormInput.jsx:58 ("forms.styles.js textarea : resize-none"), a corriger en 1.5 | Frontend | prompts du 05/10 et du 12/10 ; OT-011 et CR-011 du 16/10 | ouverte, en partie soldee (e04ee849) |
 | 10 | Relance STAGE, placeholder en dur | Backend RH | prompt du 05/10 | ouverte |
 | 11 | Campagne de tests a etendre ; commande unique de non-regression (18 controles au 12/10, sans les tests Java TestMasqueSaisie, TestNiuCoherent, TestTraitementImage) ; inventaire S3 limite | Pilote | prompts du 05/10 et du 11/10 ; REGLES_COMMUNES par. 7 | ouverte |
 | 12 | Reprises anterieures | Pilote | prompt du 05/10 | ouverte |
