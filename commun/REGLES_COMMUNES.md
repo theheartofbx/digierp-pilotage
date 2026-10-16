@@ -1,5 +1,6 @@
 # REGLES COMMUNES DigiERP - tous les Projects (Pilote, Frontend, Backend RH, Plateforme)
-# Revision 3 du 16/10/2026 (par. 2.1, 2.3, 2.4 : mode d'execution des OT) ;
+# Revision 4 du 16/10/2026 (par. 2.6 : gestion des conversations) ;
+#   revision 3 du 16/10/2026 (par. 2.1, 2.3, 2.4 : mode d'execution des OT) ;
 #   revision 2 du 15/10/2026 (option B : depot de pilotage separe, jamais sur biapay ; methode
 #   T-A en place de X1) ; revision 1 du 14/10/2026. Statut : EN CONSTRUCTION jusqu'a l'etape
 #   D5 du decoupage ; jusque-la, claude/PROMPT_REPRISE_PRINCIPAL_20261011.md (Project principal)
@@ -133,6 +134,28 @@ Mettre a jour SA ligne du fil (script a garde-fous, revision + 1), son prompt de
 commit dedie "fil: rev. <n>" dans le depot de pilotage ; push origin (GitHub) SEULEMENT, jamais
 biapay ; "Sync" dans les Projects concernes. Le fil enregistre le HEAD du depot de CODE
 (git rev-parse HEAD) ; il vit dans un autre depot, donc le commiter ne change pas ce HEAD.
+
+### 2.6 Gestion des conversations (toutes les conversations de tous les Projects)
+Regle de l'utilisateur du 16/10/2026 ; elle complete le par. 2.5.
+G1 Une conversation traite UN lot coherent (un OT et son verdict, une consignation, un releve) ;
+   on n'ouvre pas un lot nouveau tant que le lot en cours n'est pas a un etat stable.
+G2 Etats stables (seuls points de coupure admis) : apres un commit pousse et prouve, apres un
+   verdict, apres une consignation ; JAMAIS entre une ecriture et sa verification, ni avec un
+   travail non commite sans fichier de reprise.
+G3 Surveillance de charge : l'assistant estime la charge (nombre d'echanges, scripts et journaux
+   longs echanges) ; des qu'elle devient forte (reperes : environ 30 echanges, ou une dizaine de
+   scripts / journaux longs), il l'annonce, termine le lot jusqu'au prochain etat stable et
+   propose de passer a une nouvelle conversation ; il ne commence pas un lot nouveau dans une
+   conversation chargee.
+G4 Avant tout passage : fichier de reprise ecrit dans les documents du Project (etat exact,
+   hashes, attendus, commandes de controle, prochaine etape, decisions prises) + fil a jour si
+   un etat commun change ; la conversation suivante demarre par ce fichier et ne redemande rien
+   de ce qu'il contient.
+G5 Toute information fournie par l'utilisateur et necessaire a la suite (journal, decision,
+   choix) est consignee dans le fichier de reprise ou un journal de docs/digierp/tests, jamais
+   seulement dans la conversation.
+G6 Lot long ou risque d'interruption : le fichier de reprise est ecrit (puis mis a jour) AVANT
+   les etapes suivantes, pas seulement a la fin.
 
 ---
 

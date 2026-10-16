@@ -1,4 +1,4 @@
-# FIL CONDUCTEUR DigiERP - revision 16 du 16/10/2026 (par Project Pilote)
+# FIL CONDUCTEUR DigiERP - revision 17 du 16/10/2026 (par Project Pilote)
 # Lu au debut de chaque conversation, dans chaque Project. Modifie par script uniquement
 # (revision + 1 a chaque modification). Regles : section 7. Format : LISEZMOI.md.
 # Vit dans le depot de PILOTAGE (digierp-pilotage, origin GitHub seul), distinct du depot de code.
@@ -17,7 +17,7 @@
 | Migrations dev / recette | 45 / 39 ; derniere 20261011.3 |
 | Tables sous RLS (dev) | 16 |
 | Non-regression de reference | 18 controles (verte le 12/10 : echecs=0, ok=18) |
-| Qui tient le depot (arbre de travail du PC) | Pilote - consignation apres OT-011 (code mort ACCEPTE, e04ee849), decision O1 ; prochaine etape a fixer par le Pilote (correctif de la dette 51 ou etape 1.5) ; aucun travail non commite |
+| Qui tient le depot (arbre de travail du PC) | Pilote - lot G1-G6 (REGLES_COMMUNES rev. 4, par. 2.6 : gestion des conversations, commitee avec ce fil) ; prochaine etape a fixer par le Pilote (correctif de la dette 51 ou etape 1.5) ; aucun travail non commite |
 
 ## 2. Compteurs partages (prochain numero libre)
 
@@ -32,7 +32,7 @@
 
 | Project | Etat | Prochaine etape | Fenetres ouvertes | Derniere conversation |
 |---|---|---|---|---|
-| Pilote (actuel DigiERP, non renomme) | decoupage termine (D4.1, D4.2, D4.3, E1) ; ne synchronise que README.md du code + le depot de pilotage ; jauge 640 619 (32 %) ; patrons repris par OT (OT-004 a OT-011 ACCEPTE) ; REGLES_COMMUNES rev. 3 (mode d'execution, M1) | choisir la suite : correctif de la dette 51 (OT Frontend dedie) ou etape 1.5 des patrons ; D5 en temps masque (renommage, instructions des 4 Projects : un fichier synchronise se lit par project_search, REGLES_COMMUNES rev. 4, PROMPT_REPRISE_PILOTE) | - | 16/10/2026 |
+| Pilote (actuel DigiERP, non renomme) | decoupage termine (D4.1, D4.2, D4.3, E1) ; ne synchronise que README.md du code + le depot de pilotage ; jauge 640 619 (32 %) ; patrons repris par OT (OT-004 a OT-011 ACCEPTE) ; REGLES_COMMUNES rev. 4 (par. 2.6 : gestion des conversations G1-G6 ; rev. 3 : mode d'execution, M1) | saisir dans les instructions des 4 Projects la ligne qui renvoie a REGLES_COMMUNES par. 2.6 ; choisir la suite : correctif de la dette 51 (OT Frontend dedie) ou etape 1.5 des patrons ; D5 en temps masque (renommage, instructions des 4 Projects : un fichier synchronise se lit par project_search, REGLES_COMMUNES rev. 5 (Q1, Q2), PROMPT_REPRISE_PILOTE) | - | 16/10/2026 |
 | Frontend | prouve (OT-001) ; etape 1.7 terminee (1.7a OT-004, 1.7b OT-005 2a30d7c7, 1.7c OT-006 33cf81dd) ACCEPTE ; inventaire 1.3 (OT-007) et DC1 (OT-008 db314b41) ACCEPTE ; 1.3a (OT-009 5e6c682d : jetons de couleur en variables CSS branchees dans theme.extend, polices IBM Plex Sans/Mono latin+latin-ext, index.css sur IBM Plex Sans ; tests 92/92, ancien lint 1604/55 ; palette.test.ts) ACCEPTE, non deployee (DR1) ; 1.3b (OT-010 116a4964 : 65 substitutions de la table W1 dans les 4 *.styles.js, rendu identique prouve (0 conflit d'ordre CSS), cliquet du reliquat 22/38/15/29 dans palette.test.ts ; tests 97/97, ancien lint 1604/55) ACCEPTE, non deployee (DR1, DR3) ; code mort (OT-011 e04ee849 : theme.js, forms.styles.js et App.css retires, build EQUIVALENT prouve (JS identique au renommage pres, 6 regles CSS mortes en moins), tests 97/97, ancien lint 1604/55) ACCEPTE, non deploye ; prompt rev. 10 ; jauge 625 157 (31 %, mesure OT-001) | sur OT du Pilote ; inscrire la lecon 288 (demande par. 5, autorisee) | - | 16/10/2026 (OT-011) |
 | Backend RH | prouve (OT-002 ACCEPTE : controle 26 OK, prompt rev. 2 relu identique) ; jauge 876 438 (44 %) | sur OT du Pilote | - | 15/10/2026 (OT-002) |
 | Plateforme | prouve (OT-003 ACCEPTE : controle 25 OK, prompt rev. 1 relu identique, aucun acces serveur dans le CR) ; jauge 101 254 (5 %) | sur OT du Pilote ; dettes 42 (avant le deploiement des patrons, DR1), 47 (reste), 48 | - | 15/10/2026 (OT-003) |
@@ -66,11 +66,11 @@ BILAN_RECETTE|OT-NNN|...|echecs=0.
 
 | Date | Decision |
 |---|---|
+| 16/10/2026 | G1-G6 (demande de l'utilisateur, 16/10 a 17 h 10) : gestion des conversations dans toutes les conversations de tous les Projects - un lot coherent par conversation ; coupure seulement a un etat stable (commit pousse et prouve, verdict, consignation) ; surveillance de charge (environ 30 echanges ou une dizaine de scripts / journaux longs) ; fichier de reprise ecrit avant tout passage, et avant les etapes suivantes d'un lot long ; informations de l'utilisateur consignees hors de la conversation (REGLES_COMMUNES rev. 4, par. 2.6) ; une ligne des instructions de chaque Project y renvoie ; Q1 et Q2 restent pour D5 (REGLES_COMMUNES rev. 5) |
 | 16/10/2026 | O1 (OT-011) : retrait de theme.js, forms.styles.js et App.css (0 importeur reel, prouve sur l'arbre syntaxique) ; le critere "build identique" de J7 est remplace par "build EQUIVALENT" : JS identique au renommage des empreintes pres, CSS = avant moins EXACTEMENT les 6 regles que seuls ces fichiers produisaient via le content de Tailwind (after:content-["*"], after:ml-0.5, after:text-red-500, col-span-1, md:col-span-3, sticky ; aucune ailleurs dans le depot) ; O2 (App.css seul) et O3 (safelist) ecartees (lecon 290) |
 | 16/10/2026 | W1-W6 (OT-010) : W1 en 1.3b, une classe de palette d'un *.styles.js n'est remplacee que par un jeton de MEME VALEUR et de MEME ROLE, aucun jeton nouveau (65 sur 188 ; le reliquat part avec les composants des etapes 2 a 4) ; W2 rendu identique prouve par l'arbre syntaxique (docs/digierp/tests/analyse_ordre_css.mjs : ordre reel du CSS Tailwind, toutes les branches ?:, ??, tables et fonctions) ; W3 cles inexistantes hors OT (dette 51) ; W4 sans objet (0 conflit) ; W5 une analyse de combinaisons de classes se fait sur l'arbre syntaxique avec temoins, jamais sur le texte (lecon 289) ; W6 cliquet du reliquat dans palette.test.ts (plafonds par fichier, qui ne se relevent jamais) |
 | 16/10/2026 | DR3 (precise DR1) : la fin des patrons qui libere le deploiement en recette = etapes 1 a 4 et 6 ; l'etape 5 (patrons suivants au premier besoin reel, sans fin definie) se fait apres, au fil des besoins ; exception de DR1 (correctif impose) et DR2 (demonstration du pilote Employes avant l'etape 3) inchangees |
 | 16/10/2026 | M1 (blocage de l'OT-009) : mode d'execution des OT - l'assistant d'un Project ne lance aucune commande depuis son propre espace ; il donne chaque commande, l'utilisateur la lance dans WSL2 et colle la sortie ; tout OT porte la ligne MODE D'EXECUTION (REGLES_COMMUNES rev. 3, par. 2.1, 2.3, 2.4) ; piste Claude Code ecartee (outil non utilise) |
-| 15/10/2026 | K1 (CR-008) : KaiOS hors socle DC1 (KaiOS 2.5, moteur Gecko 48, ne chargeait deja pas l'application : modules ES natifs exiges par la cible de Vite ; ergonomie clavier incompatible avec un ERP) ; KaiOS 3 a mesurer avec la preuve au plancher du socle (dette 39) |
 
 ## 7. Regles du fil
 
