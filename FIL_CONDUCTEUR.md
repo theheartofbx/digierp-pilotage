@@ -1,4 +1,4 @@
-# FIL CONDUCTEUR DigiERP - revision 13 du 16/10/2026 (par Project Pilote)
+# FIL CONDUCTEUR DigiERP - revision 14 du 16/10/2026 (par Project Pilote)
 # Lu au debut de chaque conversation, dans chaque Project. Modifie par script uniquement
 # (revision + 1 a chaque modification). Regles : section 7. Format : LISEZMOI.md.
 # Vit dans le depot de PILOTAGE (digierp-pilotage, origin GitHub seul), distinct du depot de code.
@@ -13,11 +13,11 @@
 | Branche | DigiErp-Spring-React (origin GitHub + biapay GitLab) |
 | Depot de pilotage | digierp-pilotage, branche main (origin GitHub SEUL ; jamais de remote biapay : R16) |
 | Tag de reference de la garde des migrations | recette-20261011 (-> 7e861563) |
-| Recette deployee sur | 5cd225ca (fondations 1.1, 1.2, 1.4, etape 1.7 (1.7b, 1.7c), DC1 (db314b41) et 1.3a (5e6c682d) non deployees : partent a la fin des patrons, etapes 1 a 6, decision DR1) |
+| Recette deployee sur | 5cd225ca (fondations 1.1, 1.2, 1.4, etape 1.7 (1.7b, 1.7c), DC1 (db314b41) et 1.3a (5e6c682d) non deployees : partent a la fin des patrons, etapes 1 a 4 et 6 (etape 5 apres), decisions DR1 et DR3) |
 | Migrations dev / recette | 45 / 39 ; derniere 20261011.3 |
 | Tables sous RLS (dev) | 16 |
 | Non-regression de reference | 18 controles (verte le 12/10 : echecs=0, ok=18) |
-| Qui tient le depot (arbre de travail du PC) | Pilote - consignation apres OT-009 (1.3a ACCEPTE) et decision M1 (REGLES_COMMUNES rev. 3) ; prochaine etape OT-010 (etape 1.3b : *.styles.js sur les jetons, Project Frontend) ; aucun travail non commite |
+| Qui tient le depot (arbre de travail du PC) | Pilote - consignation apres OT-009 (1.3a ACCEPTE), decisions M1 (REGLES_COMMUNES rev. 3) et DR3 ; prochaine etape OT-010 (etape 1.3b : *.styles.js sur les jetons, Project Frontend) ; aucun travail non commite |
 
 ## 2. Compteurs partages (prochain numero libre)
 
@@ -64,11 +64,11 @@ BILAN_RECETTE|OT-NNN|...|echecs=0.
 
 | Date | Decision |
 |---|---|
+| 16/10/2026 | DR3 (precise DR1) : la fin des patrons qui libere le deploiement en recette = etapes 1 a 4 et 6 ; l'etape 5 (patrons suivants au premier besoin reel, sans fin definie) se fait apres, au fil des besoins ; exception de DR1 (correctif impose) et DR2 (demonstration du pilote Employes avant l'etape 3) inchangees |
 | 16/10/2026 | M1 (blocage de l'OT-009) : mode d'execution des OT - l'assistant d'un Project ne lance aucune commande depuis son propre espace ; il donne chaque commande, l'utilisateur la lance dans WSL2 et colle la sortie ; tout OT porte la ligne MODE D'EXECUTION (REGLES_COMMUNES rev. 3, par. 2.1, 2.3, 2.4) ; piste Claude Code ecartee (outil non utilise) |
 | 15/10/2026 | K1 (CR-008) : KaiOS hors socle DC1 (KaiOS 2.5, moteur Gecko 48, ne chargeait deja pas l'application : modules ES natifs exiges par la cible de Vite ; ergonomie clavier incompatible avec un ERP) ; KaiOS 3 a mesurer avec la preuve au plancher du socle (dette 39) |
 | 15/10/2026 | J1-J7 (OT-007) : J1 jetons en un niveau semantique, variables CSS en canaux RGB dans src/styles/jetons.css (V1) ; J2 branchement theme.extend, palette Tailwind conservee, classes de palette interdites dans le nouveau code .ts/.tsx (B1) ; J3 neutre unique slate ; J4 primaire blue-600 ; J5 polices IBM Plex Sans 400-700 et Mono 400, latin + latin-ext (P-b) ; J6 socle DC1 releve (R1) a Chrome 88, Edge 88, Firefox 78, Safari 14.1 / iOS 14.5 (exige par Tailwind 3.4 : :where du preflight, gap en flex) ; J7 ordre : OT-008 DC1 + browserslist, OT-009 1.3a, OT-010 1.3b, OT-011 code mort |
 | 15/10/2026 | T2 : Tailwind 3 conserve (deploiement prevu dans plusieurs structures d'Afrique centrale ; Tailwind 4 exige Chrome 111, Safari 16.4, Firefox 128) ; S3 abandonnee ; jetons de 1.3 en variables CSS branchees dans tailwind.config.js. DC1 : socle de compatibilite navigateur = cible actuelle de Vite 6 (es2020, Chrome 87, Edge 88, Firefox 78, Safari 14), ecrite explicitement dans vite.config.js (build.target, build.cssTarget) ; toute dependance ou montee de version prouve qu'elle le respecte |
-| 15/10/2026 | P6-P8 (OT-006) : icones a l'echelle du lexique seulement (sm/md/lg, aucune taille ajoutee) ; sens d'une icone porte par l'element englobant (title + sr-only traduits), Icone toujours decorative ; mecanisme d'exception du test d'architecture retire (lucide-react importe par icones.ts seul, sans derogation) |
 
 ## 7. Regles du fil
 
