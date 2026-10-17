@@ -1,5 +1,7 @@
 # INDEX DES DETTES TECHNIQUES DigiERP
-# Revision 11 du 16/10/2026 (dette 9 : config/theme.js, shared/styles/forms.styles.js et App.css
+# Revision 12 du 17/10/2026 (dette 51 SOLDEE par 0826fd14, OT-012 ; dette 52 nouvelle : ecarts
+#   visuels conserves par l'OT-012, a traiter avec les etapes 1.5 et 2) ;
+#   revision 11 du 16/10/2026 (dette 9 : config/theme.js, shared/styles/forms.styles.js et App.css
 #   retires par e04ee849, OT-011) ;
 #   revision 10 du 16/10/2026 (dette 42 : echeance alignee sur DR3 ; dette 51 nouvelle : cles de
 #   styles referencees mais inexistantes, releves OT-010) ;
@@ -75,7 +77,7 @@
 | 48 | Secrets de developpement en dur dans la configuration suivie par Git (cle de signature JWT et mot de passe de base dans docker-compose.yml, les application*.yaml d'auth-service et de gateway, postgres-init/01_create_app_role.sql, README.md) ; prouver que la recette en utilise d'AUTRES (comparaison d'empreintes sur le serveur, jamais de valeur affichee), puis sortir les valeurs de la configuration suivie ; constat du 15/10 (CR-003) : le mot de passe de la base de DEVELOPPEMENT du PC figure aussi dans le depot de pilotage (commun/controle_reprise.sh, fonction psqlq ; commun/REGLES_COMMUNES.md, par. 4.1) ; le controle R9 ne le cherche pas (il vise les acces au serveur) : a traiter avec la dette (meme valeur, meme decision), R9 inchange d'ici la | Plateforme | prompt de decoupage du 14/10 par. 2 ; CR-003 du 15/10 | ouverte, a prouver |
 | 49 | Emojis hors navigation : 393 points de code emoji dans src/ apres l'etape 1.7b (mesure de la recette OT-005), repartis dans 43 tables locales (inventaire OT-004 avant 1.7b : 431 emojis dans 89 fichiers, navigation comprise) ; a remplacer par le lexique d'icones (src/shared/ui/icones.ts, composant Icone) module par module avec les etapes 2 a 4 des patrons, jamais en masse ; toute cle nouvelle decidee par la table de reference ; piste : cliquet sur le nombre d'emojis de src/ (ne doit pas augmenter) | Frontend | CR-004 et CR-005 du 15/10 ; decision P4 (OT-004) | ouverte |
 | 50 | NotificationsPanel : le bouton fermer (l. 91-93 apres 33cf81dd) n'a pas de nom accessible (icone decorative, aucun texte ni aria-label) ; preexistant, hors OT-006 ; a traiter par une cle i18n + aria-label, ou par BoutonIcone (etape 1.5) qui l'imposera | Frontend | CR-006 du 15/10 (question 3) | ouverte |
-| 51 | Cles de styles referencees mais inexistantes : btnStyles.dangerSmall (2), btnStyles.iconBtnPrimary (6), btnStyles.iconBtnSecondary (3), btnStyles.iconBtnWarning (1), btnStyles.successSmall (2), layoutStyles.pageContainer (3), soit 17 occurrences (mesure du Pilote par arbre syntaxique, 16/10) : le className recoit undefined (ou le secours d'un ??) et l'ecran compense par ses propres classes ; s'y ajoutent 3 secours morts derriere ?? dont la partie gauche existe toujours (AbsencesPage.jsx:98, AbsenceDetailModal.jsx:26-27) ; a traiter par un correctif a part (cle existante ou retrait, ecran par ecran, rendu verifie a l'ecran) ou par les composants des etapes 2 a 4 ; preexistant, hors OT-010 | Frontend | releves OT-010 du Pilote (docs/digierp/tests/releve_OT-010_pilote_3.log a _5.log) ; OT-010 | ouverte |
+| 52 | Ecarts visuels conserves par l'OT-012 (rendu inchange, decision A du 16/10) : AbsencesTable.jsx, action avertissement affichee en vert (btnStyles.iconBtnSuccess, table STYLE_ICONE ; voir aussi la dette 16) ; TypeAbsenceTable.jsx, bouton-icone au style d'un bouton plein (btnStyles.secondary) ; PerimetresPage.jsx, WorkflowModelesPage.jsx et DisciplinePage.jsx sans enveloppe de page (className={layoutStyles.pageContainer} retire : la cle n'existait pas) ; a aligner par Bouton / BoutonIcone (etape 1.5) et par le patron Page (etape 2), rendu verifie a l'ecran | Frontend | OT-012 et CR-012 du 17/10 ; decision A (fil rev. 18) | ouverte, avec les etapes 1.5 et 2 |
 
 ## 2. DETTES SOLDEES
 
@@ -85,6 +87,7 @@
 | 23 | RLS d'ecriture de mis_mission | commit 89ae754f |
 | 30 | Audit (auteur, IP, user-agent) | commit 5fe6d659 |
 | 43 | nginx frontend : en-tetes de securite absents des statiques, Cache-Control en double | commit 5cd225ca (deploye, 15/15 PC et recette) |
+| 51 | Cles de styles referencees mais inexistantes (17 occurrences) et secours morts derriere ?? (22, et non 3 comme indexe) : 39 emplacements dans 23 fichiers remplaces par ce qu'ils affichaient (decision A), 3 imports retires, rendu inchange ; ecarts visuels conserves : dette 52 | commit 0826fd14 (OT-012, recette 10/10 ; non deploye) |
 
 ## 3. DETTES SANS NUMERO (10/10 soir et 12/10, a numeroter a la prochaine revision)
 
